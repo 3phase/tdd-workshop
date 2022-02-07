@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  @Input()
+  public x: number;
+
+  @Input()
+  public y: number;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public addNumber(numOne: number, numTwo: number) {
-    if (isNaN(numOne) || isNaN(numTwo)) {
+  public addNumber(numOne?: number, numTwo?: number) {
+    const numberOne = numOne || this.x;
+    const numberTwo = numTwo || this.y;
+    
+    if (isNaN(numberOne) || isNaN(numberTwo)) {
       throw new Error('Both parameters shouldn\'t be NaN');
     }
-    return numOne + numTwo;
+    
+    return numberOne + numberTwo;
   }
 
 }

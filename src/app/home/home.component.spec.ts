@@ -37,6 +37,14 @@ describe('HomeComponent', () => {
     expect(() => app.addNumber(NaN, Infinity)).toThrow();
     result = app.addNumber(17, Infinity);
     expect(result).toBe(Infinity);
-  })
+  });
+
+  it('should add numbers up via input', () => {
+    const app = fixture.componentInstance;
+    app.x = 1;
+    app.y = 2;
+    const result = app.addNumber();
+    expect(result).toBe(3);
+  });
 
 });
