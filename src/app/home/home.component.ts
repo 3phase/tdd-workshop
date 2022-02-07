@@ -8,10 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   @Input()
-  public x: number;
+  public x: number = 0;
 
   @Input()
-  public y: number;
+  public y: number = 0;
 
   constructor() { }
 
@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit {
   public addNumber(numOne?: number, numTwo?: number) {
     const numberOne = numOne || this.x;
     const numberTwo = numTwo || this.y;
-    
+
     if (isNaN(numberOne) || isNaN(numberTwo)) {
       throw new Error('Both parameters shouldn\'t be NaN');
     }
-    
+
     return numberOne + numberTwo;
   }
 
